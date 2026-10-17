@@ -1,0 +1,51 @@
+\section*{Exercise 1.2.3a}
+\begin{proof}
+    We first show green function for the first quadratic. As we need to put 2 negative charges for each boundary, a further positive charge is needed in the third quadratic. Next we show write out it's forms and check each properties. For $y \in \partial U, x\in U$,
+
+\begin{equation}
+    G(x,y) = \Phi(y-x) -  \Phi(y-x_2) - \Phi(y-x_4) + \Phi(y-x_3)
+\end{equation}
+where $x$ be the source point in the first quadrant, and $x_2, x_3, x_4$ be the corresponding symmetries of $x$ into the second, third, and fourth quadrants, respectively. Check the property: the harmonic property exists as we do not need to worry about the origin. Next, for $\Phi^{x}(y) = \Phi(y-x)$, if $y$ is on the x-axis, $\Phi(y-x_2) = \Phi(y-x_3)$, $\Phi(y-x) = \Phi(y-x_4)$. And if $y$ is on the y-axis, one has $\Phi(y-x_4) = \Phi(y-x_3)$, $\Phi(y-x_2) = \Phi(y-x)$. Hence, this meets our needs.
+
+For much more general cases such that $n>2$, one may get $2^n-1$ additional chargers. Define $x_{(i)} = (i_1 x_1,\cdots, i_nx_n)$ where $i_j \in \{\pm 1\}$. One can always find a symmetric element to overcome the boudary condition. Then, we are done.
+\end{proof}
+
+For further steps to figure out it is a solution, as the poisson kernel's form is still similar to the form in Thm 1.15 ( upper plane problem), most of the steps should be the same as with $\int_{\partial U} K(x,y) dS(y) = 1$, and we will proof this equation in the next exercise.
+
+\section*{Exercise 1.2.3b}
+\begin{proof}
+    We verify thing step by step. First regularity comes from harmonic, as \begin{equation*}
+        \Delta_x K(x,y) = \partial_{\nu_y} \Delta_x G(x,y)
+    \end{equation*} The exchangeability comes form boundedness of this region and continuity.Then one may exchange integral and differential sign again then one may verify that first two property hold.
+
+    Before we start to proof third one, we first verify $\int_{\partial U} K(x,y) dS(y) = 1$ in general cases as $U$ open and bounded. As $K(x,y)$ have nothing to do with $g$, one may set $u = 1$ for any $x \in U$ and $u|_{\partial U} = 1$, we immediately see
+    \begin{equation*}
+        u(x) = 1 = \int_{\partial U} K(x,y) \cdot 1 dS(y)
+    \end{equation*}
+    Next, let $x_0\in \partial U, x \in U$ close to $x_0$, and some $\epsilon>0$, consider 
+    \begin{align*}
+        |u(x)-g(x_0)| & \leq \int_{\partial U} K(x,y) |\left(g(y)-g(x_0)\right)|dS(y)\\
+                    &\leq \epsilon \int_{\partial U \cap B(x_0,\delta)} K(x,y) dS(y) +  2||g||_\infty\int_{\partial U \backslash B(x_0,\delta)} K(x,y) dS(y)
+    \end{align*}
+    As left part smaller than $\epsilon$ by above equality, what left is only the RHS. Still follow the argument on the note, we may let $|x-x_0| < \delta/2$ ,then one would have $|y-x| \geq |y-x_0|/2$, so that 
+    \begin{align*}
+      \frac{1-|x|^2}{n\alpha(n)} \int_{\partial U \backslash B(x_0,\delta)} \frac{1}{|y-x|^n}  dS(y) \leq \frac{2^n(1-|x|^2)}{n\alpha(n)} n \alpha(n) \frac{1}{\delta^n}
+    \end{align*}
+    Choosing some proper $\delta>0$, we are done here.
+\end{proof}
+
+
+\section*{Optional Question}
+The question is similar with the ideas w.r.t. complex analysis. And one is not able to use cauchy type inequality.
+
+Consider $\{r<|x|<R\}$, by Gauss-Green, one have for arbitrary $r<R$,
+\begin{equation*}
+    \int_{r<|x|<R} \Delta u dx = 0 = \int_{ \partial B(0,R)} \partial_{\nu} u dS -\int_{ \partial B(0,r)} \partial_{\nu} u dS
+\end{equation*}
+Hence, $F(R) = \int_{ \partial B(0,R)} \partial_{\nu} u dS$ is a constant. Define $A(r)$ as surface average,
+$$ A(r) = \frac{1}{r^{n-1}n\alpha(n)} \int_{ \partial B(0,r)} u dS_r$$
+$$A'(r) = \frac{1}{r^{n-1}n\alpha(n)} F(r) $$
+
+So if $F \neq 0$, then one have $A$ behave like $\log r$ or $r^{2-n}$, which all not satisfy boundedness around origin. As $u\in C(\mathbb {R}^n)$, one have $\lim A(r) = u(0)$ as $r \to 0$. As $A$ is constant, one have Mean Value Property at 0, then we have function harmonic at 0, hence we are done by Liouville Theorem.
+
+
